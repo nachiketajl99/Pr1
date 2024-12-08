@@ -1,0 +1,205 @@
+
+
+--Q.What is data?
+--Collection of meaningful information.
+--OR
+--Collection record information.
+
+--Q. What is database(DBMS)?
+--it is collection of data in file format.
+--ex:Excel,word file,text file, notepad , notepad++ etc.
+
+--it stores less amount of data 
+--no relationship between two files or tables 
+
+
+--Q.What is RDBMS(Relational data base management system)?
+--it is collection of table related information.
+--it stores huge amount of data and to extract the data we have a simple language i.e. SQL
+--There is relation between two or more tables.
+
+--Q.what is table ?
+--it is collection of rows and columns.
+
+--SQL statements
+--There are four types of SQL statements 
+--1.DDL(Data Definition language) -- Table level operation.-                              
+                                                        Create. Alter, Drop, Truncate, Rename
+
+--2.DML(Data Manipulation Language) --Data stored inside the table- 
+                                                         Insert, Update, Delete
+
+--3.DCL(Data Control Language)-  Grant, Revoke
+
+--4.TCL(Transaction Control Language) - Commit,  Rollback
+
+--5.DQL(Data Control Language)- Select
+
+
+
+------------------------------------------------------------------
+
+
+--SQL is not a case sensitive language
+--The meaning 'A' is always same 'a'
+--for ex: 'AMAR' it has same meaning of 'amar'
+
+
+
+--Data types 
+--Type of data/value of an object can hold is known as data type.
+--A].Numeric data type 
+
+--1.BIT
+--it stores value 0 or 1
+
+--2.TINYINT 
+--It will store the value ranging from 0 to 255
+
+--3.SMALLINT
+--it will store value ranging -32768 to 32767
+
+--4.Decimal
+--an exact fixed point number 
+
+--5. INT
+--it stores an integer value i.e. ranging from -2147483648 to 2147483647
+
+--B].Approximate numeric data type 
+--1.Float 
+--it will store floating point number range is -1.8E to 308 to 1.8E to 308
+--for Ex: 8.2345, 0.9876 etc
+--2.Real
+--it will also store an floating point numbers -3.40E to 38 to 3.40E to 38
+
+--C].String or charecter data type
+--1.char - 0-9,a-z,A-Z and Special symbol it will store data as 1 bit
+--Static memory allocation and it is having size of 8000 chars
+--for ex: char(20) -- AMAR - 4 char reaming 16 blocks of memory waisted because it has been fixed
+
+
+--2.varchar -  - 0-9,a-z,A-Z and Special symbol
+--It is dynamic memory allocation and it will store data as 1 bit
+--for ex: varchar(20) -- AMAR - 4 char reaming 16 blocks of memory it will releasse has been fixed
+declare @val1 varchar(8000)='AMARPatil';
+print @val1
+print datalength(@val1)
+print len(@val1)
+
+
+--3.nchar
+--It is static memory allocation and it can store 4000 charecters (1 char it will occupy 2bytes)
+declare @value nchar(4000) = 'AMAR'
+print @value
+print datalength(@value)
+print len(@value)
+
+-
+
+-4.nvarchar
+--It is dynamic memory allocation and it can store 4000 charecters (1 char it will occupy 2bytes).
+
+declare @value1 nvarchar(4000) = 'AMAR'
+print @value1
+print datalength(@value1)
+print len(@value1)
+
+--D].data and Time data type 
+--1.date 
+--It will allow you to insert the date in mulptiple formats 
+--For Ex: YYYY/MM/DD,DD/MM/YYYY,YYYY/DD/MM etc 
+select GETDATE()
+
+declare @date1 date = getdate()
+print @date1
+--2.time 
+--it will allow you to insert the time in below format
+
+
+--HH:MM:SS:MS
+
+declare @time time  = getdate()
+print @time
+
+--3.Datetime
+--It will allow you to insert date and time together.
+--YYYY/MM/DD HH:MM AM/PM
+
+declare @datetime datetime  = getdate()
+print @datetime
+
+
+--------------------------------------------------------------------------
+
+
+--Create
+
+--This Is DDL SQL statement and used to create database and Table.
+
+
+--Q.How to create Table?
+Create table FirstTable(
+FID int,
+FirstName varchar(20),
+LastName varchar(20),
+City varchar(20),
+Age int);
+
+--In SQL if you want to terminate SQL statement then use ; at the end of statement.
+
+
+
+--SELECT
+
+
+--Select statement is used to select the data which you have written
+
+
+--Q.How  to fetch the complete data from a table?
+select *  from FirstTable;
+
+--Q. how to select a particular column from table?
+select firstname,age from FirstTable
+
+--* - it will indicate we are selecting complete data from table----
+
+
+
+--Q.How will you insert the data into the table?
+--INSERT
+--Insert Statement is used to insert the data into the table.
+--By two ways we can insert the data into the table
+--METHOD-I
+--We have to insert the data sequence wise how we have created the table
+insert into FirstTable values(1,'Praveen','Patil','Pune',30);
+
+insert into FirstTable values(1,'Praveen','Patil','Pune'); --Erorr -Column name or number of supplied values does not match table definition.
+
+select * from FirstTable
+
+
+create table employee
+(EID int,
+FirstName varchar(20),
+LastName varchar(20),
+Loc varchar(20),
+Dept varchar(20),
+salary int)
+
+insert into employee values (1,'Rohan','Mane','Sangali','HR',15000)
+insert into employee values (2,'Sheetal','Chavan','Parbhani','Finance',25000)
+insert into employee values (3,'Amit','Patil','Latur','HR',16000)
+insert into employee values (4,'Riya','Verma','Pune','Account',20000)
+insert into employee values (5,'Sita','Sharma','Patna','HR',15000)
+insert into employee values (6,'Kirti','Gold','Solapur','Staffing',35000)
+insert into employee values (7,'Sohan','Jadhav','Miraj','Account',45000)
+insert into employee values (8,'Priyanka','Sharma','Nagpur','Finance',46000)
+insert into employee values (9,'Virat','Patil','Jaipur','Staffing',34000)
+insert into employee values (10,'Sohil','Khan','Mumbai','HR',33000)
+insert into employee values (11,'Ronit','Patil','Miraj','Admin',NULL)
+
+select * from employee;
+
+
+--------------------------------------------------------------------
+

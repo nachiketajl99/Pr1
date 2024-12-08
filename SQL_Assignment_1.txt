@@ -1,0 +1,11 @@
+(Create Table accordingly)
+1.What is the diff between Delete drop truncate.
+2.Write a query to display city name which are not starting from vowels.
+3.Write SQL query to update all employees’ salary by 10%.
+4.Write below query in correct syntax
+  Select gender,age from Table where avg(age)>30 group by gender
+5.find sum of salary of each depat excpt civil dept
+6.find avg salary of each deparm from table where avg sal is less than 50000
+7.dispaly students name who are out of maharashta and they are using lang English and hindi.
+8.How to calculate count of employee of each dept
+9.Display duplicate records for Name column

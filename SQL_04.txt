@@ -1,0 +1,110 @@
+--2.DML(Data Manipulation Language)
+--UPDATE
+--Update statement is used to update complete column data or specific record if condition is provided.
+-- By using update statement you can only play with table data.
+
+--synatx:
+--UPDATE TABLE_NAME SET COLUMN_NAME ='VALUE' where COLUMN_NAME ='CONDITION'
+
+
+
+create table UPDATE_DELETE (U_ID int, UNAME varchar(20) ,ULOC varchar(20))
+
+insert into UPDATE_DELETE values (1,'Sagar','PUNE')
+insert into UPDATE_DELETE values (2,'Amit','Sangli')
+insert into UPDATE_DELETE values (3,'Sarika','Bijapur')
+insert into UPDATE_DELETE values (4,'Rohan','Mumbai')
+insert into UPDATE_DELETE values (5,'Amrita','Palampur')
+
+
+select * from UPDATE_DELETE
+
+update UPDATE_DELETE SET ULOC ='Pune' where U_ID >=2
+
+update UPDATE_DELETE SET ULOC ='Jaipur' where U_ID =5
+
+update UPDATE_DELETE SET UNAME ='Sohan' where U_ID =4
+
+-------------------------------------------------------------------------
+
+.Data Definition Language(DDL) - 
+--Along with DDL statements "TABLE" Keyword is mandatory.
+
+--DROP
+--DROP statement will delete the table structure as well as table data.
+--Drop statement we can drop or delete the database.
+
+--syntax:
+--DROP TABLE TABLE_NAME 
+--DROP DATABASE DATABASE_NAME
+
+DROP table UPDATE_DELETE -- it will delete table data as well as table structure.
+
+--Q.Diffrence between Delete and Drop?
+
+
+--Truncate 
+--Truncate statement allow you to delete the records from a table at once.
+--It won’t delete the structure of the table
+--In Truncate you can't delete the data Row-By-Row by specifying a condition.
+
+--syntax : truncate table table_name 
+
+create table Truncate1 (U_ID int, UNAME varchar(20) ,ULOC varchar(20))
+
+insert into Truncate1 values (1,'Sagar','PUNE')
+insert into Truncate1 values (2,'Amit','Sangli')
+insert into Truncate1 values (3,'Sarika','Bijapur')
+insert into Truncate1 values (4,'Rohan','Mumbai')
+insert into Truncate1 values (5,'Amrita','Palampur')
+
+select * from Truncate1
+
+truncate table truncate1
+
+--Q. What is the difference between Delete, Drop and Truncate?
+--Q.  What is the difference between DML and DDL statements?
+--Q.How will you delete the data from a table at once?
+
+
+--ALTER
+--Alter statement is used to perform operation on table level attributes/Columns.
+--By using Alter
+--We can ADD one or More columns.
+--We can delete one more columns.
+--We can change the data type for a particular column.
+--We can increase or decrese the size of particular column.
+
+Create table ALTER_OPERATION(AID int , ANAME varchar(20))
+
+
+insert into ALTER_OPERATION values (1,'Amit')
+insert into ALTER_OPERATION values (2,'sumit')
+insert into ALTER_OPERATION values (3,'rohit')
+insert into ALTER_OPERATION values (4,'anil')
+insert into ALTER_OPERATION values (5,'anil123456')
+
+select * from ALTER_OPERATION
+
+--Adding a single column into a table
+
+alter table ALTER_OPERATION ADD loc varchar(20)
+
+---Adding multiple columns in a table
+alter table alter_operation add Pincode int,city varchar(20)
+
+--Dropping/Deleting single column from table
+alter table alter_operation drop column city
+
+--Dropping/Deleting multiple columns from table
+alter table alter_operation drop column loc,pincode
+
+
+--to increse or decrease the size of a column
+
+alter table alter_operation alter column aname varchar(10)
+
+alter table alter_operation alter column aname varchar(15)
+
+
+

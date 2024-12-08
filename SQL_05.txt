@@ -1,0 +1,138 @@
+--Functions
+--1.min()
+--2.max()
+--3.count()
+--4.TOP
+--5.sum()
+--6.avg()
+--7.Distinct()
+
+--1.MIN()
+--This function will return the minimum value from a selected column
+
+select * from employee order by salary Desc
+select min(salary) as minsal from employee --numbers === 0 to 9
+
+select min(FirstName) from employee  -- text value === A to Z 
+
+--2.MAX()
+--This function will return maximum value from selected column
+select * from employee order by salary Desc
+
+
+--3.Count()
+--This function is used to count the number of records from table or column.
+--Count function always accepts one argument.
+--It won’t count NULL values from the table or column.
+
+select count(*) as EmpCount from employee
+select * from employee
+select count(loc) from employee
+
+--Q.In count function NULL value can be considered?
+--NO, Null value is not considered in count function.
+select count(8888) --- 1
+
+select count() ---- error - The count function requires 1 argument(s).
+
+
+insert into employee values(11,'Ashok',NULL,NULL,NULL,21000)
+
+--4.TOP()
+--This function is used to display the top records from table as per specified count.
+--This function is very useful when we have large amount of data in table .
+
+select Top 3 * from employee -- it will display the top 3 records from table.
+
+
+--5.Sum
+--this function add all recorfds from a column.
+--it will return the total sum value in numeric expression.
+--It will ignore NULL values from column.
+select * from employee
+select sum(salary) as totalsary from employee
+
+
+select sum(loc) as totalsary from employee --exception : Operand data type varchar is invalid for sum operator.
+
+--6.avg()
+--This function is used to find the avg of the column.
+--It will ignore the NULL values.
+
+select sum(salary) as totalsary from employee
+select count(salary) from employee 
+select avg(salary) as AVGSAL from employee
+
+--NOTE: In count,sum, and Avg function NULL values are ignored.
+
+--7.Distinct
+--This function is used to find the unique records from column.
+select * from employee
+
+select distinct(Dept) from employee
+
+select count(distinct(Dept)) from employee 
+
+select count(*) from employee where Dept ='Account'
+
+select distinct(salary) from employee
+
+
+------------------------------------------------------------------------------------
+
+--2.Group by
+--Group  by statements are used in conjection with aggregate functions to group result-set by one or more columns.
+--MIN,MAX,Count,AVG,SUM,
+--Syntax:
+--select column_name , aggregate_Function(column_name) from Table_NAME
+--where Column_name <Condition>
+--group by Column_name
+
+
+
+--Q.Find the sum of salary of each department?
+select department,sum(salary) as DeptSal from employee 
+group by department
+
+--Q.Display the department name with highest salary?
+--Q.In group where we can use 'WHERE' clause and Why?
+
+
+--------------------------------------------------------------------
+
+--3.HAVING Clause
+--Having clause is added in SQL because the WHERE clause not used with aggreagate function.
+--Syntax:
+--select column_name , aggregate_Function(column_name) from Table_NAME
+--where Column_name <Condition>
+--group by Column_name
+--HAVING Aggregate_Function(Column_NAME) operator Value.
+
+--Q. How to display the department wise total salary is greater  than 70000?
+select department,SUM(salary) from employee
+--where SUM(salary) > 70000
+group by department
+having SUM(salary) > 70000
+
+--By Using Group by and Having Clause we can identify the duplicate records from table.
+--To identify the duplicate from Table 
+----------------------------------------------------------------------
+
+--4.order by
+--This clause is used to sort the result in ascending (ASC) or Descending(DESC) order.
+--If the column contains NULL value in it and if we are performing order by operation then NULL value should be first in ASC and Last in DESC.
+
+select * from employee order by salary -- this is by default ascending order
+
+select * from employee order by salary ASC
+
+select * from employee order by salary desc
+
+select * from employee order by LastName desc
+select * from employee order by LastName 
+insert into employee values(11,'Meena','','Hyderabad','HR','')
+
+insert into employee (EID,FirstName,LOc) values(12,'Roshan','Yavatmal')
+
+select * from employee order by FirstName asc
+

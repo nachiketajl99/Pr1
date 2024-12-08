@@ -1,0 +1,143 @@
+--Clauses/filters 
+--We have Clauses in Sql to perform filter related information
+--1.Where
+--2.order by
+--3.group by
+--4.having 
+
+select * from FirstTable
+
+--1.Where
+--Where clause is used with comparison operator,arithmatic and logical operators.
+--It used to filter the specific condition or we can select a particlar records from table.
+
+--Operators
+--1.Comaprision Operator 
+--2.Logical Operator
+--3.Arithmatic operator
+--4.IN and NOT IN
+--5.Between and NOT BETWEEN
+--6.LIKE
+
+--1.Comaprision Operator 
+--it is used to compare the condition provided in filter clauses or where clause.
+-- = - equal to
+-- > - greater than
+-- < - less than
+-- >= - greater than equal to
+-- <= - less than equal to
+-- != or <> -not equal to
+
+
+
+select * from employee where dept = 'HR'
+select * from employee where EID > 5
+select * from employee where EID < 4
+select * from employee where EID >= 7
+select * from employee where EID <= 4
+select * from employee where EID <> 7  --not equal to
+select * from employee where EID != 7  --not equal to
+
+
+
+--Logical Operator 
+
+--these operators are used to compare two inputs logically and provide the result.
+--1.AND
+--It will be just like multiplication 
+
+--AND oeartion
+--A		B		O/P
+--0		0		0
+--0		1		0
+--1		0		0
+--1		1		1
+
+--A			B			O/P
+--False		False		False
+--False		True		False
+--True		False		False
+--True		True		True
+
+select * from employee where eid = 1 and dept = 'Finance'
+select * from employee where EID =5 and loc ='Patna'
+
+
+
+
+--2.OR
+--It will work like addition
+--OR operation
+--A		B		O/P
+--0		0		0
+--0		1		1
+--1		0		1
+--1		1		1
+
+--A		B		O/P
+--False		False		False
+--False		True		True
+--True		False		True
+--True		True		True
+
+select * from employee where eid = 11 or dept = 'Finance'
+select * from employee 
+
+select * from employee where EID =5 or salary > 40000 or loc ='Pune'
+
+---------------------------------------------------------
+
+--IN and NOT IN operator 
+
+--This operator will allow you to navigate or point out the values which maintained or mentioned inside the in clause.
+--Not In operator will perform vice-versa operation as compared to IN operator.
+
+select * from employee where eid => 1,2 -- incorrect syntax because comparison operator will allow you to insert only one condition.
+
+select * from employee where eid in (1,3,4,5)
+select * from employee where eid not in (1,3,4,5)
+
+select * from employee where loc in ('Pune','sangali','Miraj')
+select * from employee where loc not in ('Pune','sangali','Miraj')
+
+
+------------------------------------------
+--Between and Not between
+
+--This operator/ clause is used to display the values or records between the range you have specified.
+--This operator works along with AND operator.
+
+select * from employee where EID between 2 and 6
+
+select * from employee where Loc between 'A' and 'N'   --A to N
+
+--Not Between
+select * from employee where EID not between 2 and 6
+
+select * from employee where Loc not between 'A' and 'N'  -- excluding A to N cities name  <=N 
+
+-----------------------------------------------------------------------------------
+
+--LIKE 
+--LIKE operator is used to search for a specified pattern in a column.
+--Mostly like operator is used in where clause.
+--Like operator used wildcards for searching a pattern
+--1. % - Represents zero,one or multiple charecters or numbers./ A substitute for Zero or more characters
+
+--ex:  Seeta,meeta,geeta sena, sona siya 
+
+--'S%' - start with 'S' chareter and it will display all the names which starts with S.
+--'%S' - End with 'S' charetcer and it will display all the names which END with S.
+--'%S%' -Anywhere inside record/column if 'S' charetcer and it will display all the names which starts or ends or anywhere inside into a column.
+
+select * from employee where FirstName like 's%' ---at the start of name s
+
+select * from employee where FirstName like '%A' -- at the end of name a
+
+select * from employee where FirstName like '%A%' --anywhere inside or start or end.
+
+
+--Display the name which starts with s and ends with A
+select * from employee where FirstName like 's%a' 
+
+

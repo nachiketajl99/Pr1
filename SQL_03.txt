@@ -1,0 +1,60 @@
+--.Arithmetic operator 
+--these operators used to perform mathematical operation like +,-,*,/ and %
+
+select * from employee
+
+select *,MonthlyIcrement =salary+1000  from employee
+
+select *,lossofpay = 2*(salary/30) from employee
+
+select *,AnnualPackage =salary*12 from employee
+
+
+---------------------------------------------------------------------------------
+
+
+--NULL Values 
+--A column with a NULL value is column with NO value
+--NULL value is different from 0(zero) and blank/empty space.
+
+select * from employee where salary = NULL
+
+--Q.How to test the NULL values from column?
+--There are two ways to check the NULL values from column
+--1.IS NULL
+--2.IS NOT NULL
+
+select * from employee where salary = NULL  -- Blank /not possible to check by using comparison/logical/arithmetic operator 
+
+
+select * from employee where salary is NULL 
+
+select * from employee where salary is not NULL 
+
+
+--------------------------------------------------------------------------------------
+
+--DELETE
+--Delete statement is used to delete the data from table row by row.
+--By using DELETE statement it is not possible to delete the structure.
+--We can delete the table data at one time or row by row by specifying an condition.
+
+--syntax:
+--DELETE TABLE_NAME where COULMN_NAME ='CONDITION'
+
+select * from UPDATE_DELETE
+
+delete Table_name -- it will delete the complete data from table.
+
+delete employee  where U_ID =5
+
+delete employee  where U_ID <=2
+
+
+
+--------------------------------------------------------------------------------------
+
+
+
+
+

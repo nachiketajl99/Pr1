@@ -1,0 +1,99 @@
+--Date and Time Function
+
+--getdate 
+select getdate() as Todays date-- Todays date
+
+select getdate() -1 as Yesterday date --Yesterday date 
+
+select getdate() +1 as Tomorrow date --Tomorrow date 
+
+select getdate() +2
+
+--There are three different functions in SQL to modify or perform any date related task
+--1.DATEDIFF()
+--2.DATEPART()
+--3.DATEADD()
+
+--1.datediff() function
+
+--The datediff function requires 3 argument(s).
+--If we provide more than 3 arguments then it will through an exception 
+
+--(YY,MM,DD,HH,Minutes and seconds)
+
+select DATEDIFF(YYYY,'1987/09/13','2021/09/13')
+
+select DATEDIFF(HH,getdate(),GETDATE()+2)
+--syntax : DATEDIFF(interval,date1,date2)
+
+--interval
+--Year,YYYY, YY = Year
+--Quarter,QQ, Q = Quarter
+--Month - MM, M = Month
+--DAYOFYEAR - day of the year
+--DAY,dy,y = day
+--WEEK,WW,WK = weekday
+--HOUR,HH = hour
+--MINUTE,MI,N = Minute
+--SECOND,SS,S = Second 
+--MILISECOND , MS = Millisecond
+
+
+select datediff(MINUTE,'2015/01/01','2021/08/01')
+
+--Q.HOW  to calculate your age ?
+
+select DATEDIFF(YY,'1999/08/15',getdate()) as Present_Age
+
+
+select DATEDIFF(YEAR,'MONTH',getdate()) as Present_Age
+
+
+Create table Account_details (
+ACCT_NUMBER int primary key identity(11112881,1),
+ACCT_NAME varchar(20),
+ACCT_OPEN_DATE date,
+BRANCH Varchar(20))
+
+insert into Account_details values ('Shubham','2015/12/09','MUMBAI')
+insert into Account_details values ('Rihan','2016/01/12','Jaipur')
+insert into Account_details values ('Sheetal','2017/08/11','GOA')
+insert into Account_details values ('Priyanka','2017/01/01','Chennai')
+insert into Account_details values ('Manik','2015/01/08','Agra')
+insert into Account_details values ('Veena','2021/01/01','Patna')
+insert into Account_details values ('Rohan','2019/07/01','Pune')
+insert into Account_details values ('Laxmi',GETDATE(),'rohatak')
+insert into Account_details values ('Jinal',GETDATE(),'Indore')
+
+select * from Account_details
+
+
+
+--Q.What is the age of your bank account
+
+
+--Q.Calculate the no of accounts which is opened during the current year.
+
+
+--2.DATEPART
+
+--This will allow you to display the date part 
+--Syntax : DATEPART(interval,date/column_name)
+
+select getdate()
+select DATEPART(HH,GETDATE())
+
+select * from Account_details
+
+
+
+
+--3.DATEADD()
+
+--it will allow you to add the dates.
+--it will accept three arguments.
+--syntax : DATEADD(interval,value,date/datecolumn)
+
+select DATEADD(DD,30,GETDATE()) as after30days
+
+

@@ -1,0 +1,163 @@
+--Sub query and Co-Relational Query
+
+
+--Sub query(Nested subquery)
+--Query within query i.e outer query(OQ) and inside inner query(IQ).
+--OQ and IQ is independent.
+--It follows bottom up approach
+--Inside Subquery, IQ always execute only once.
+
+select * from customer where C_ID in (select CID from orders) --(C2,C3,C1,C2,C4,C2)
+
+--Co-relational query
+
+--Query within query i.e outer query(OQ) and inside inner query(IQ).
+--IQ is dependent on outer query.
+--It follows top down up approach.
+--Exist and Not Exist
+--EXIST is used to check whether the result of co-related nested query is emptyor not.
+--Exist(S) 
+--TRUE: S has atleast one row/record
+--FALSE : S has no row/record.
+
+--NOT EXIST(S)
+--TRUE:S has no row/record.
+--FALSE :S has atleast one row/record
+
+Create Table customer(C_ID varchar(5) primary key ,CNAME varchar(20),Loc varchar(20))
+
+
+insert into customer values('C1','AMIT','PUNE')
+insert into customer values('C2','Sumit','Delhi')
+insert into customer values('C3','varun','Mumbai')
+insert into customer values('C4','snehal','Latur')
+insert into customer values('C5','Raj','Sangli')
+insert into customer values('C6','Mohit','Satara')
+
+select * from customer
+
+create table orders(OID int primary key, CID varchar(5),groceries varchar(20))
+
+insert into orders values(1,'C2','almonds')
+insert into orders values(2,'C3','deo')
+insert into orders values(3,'C1','milk')
+insert into orders values(4,'C2','soap') 
+insert into orders values(5,'C4','dishes')
+insert into orders values(6,'C2','rice')
+
+select * from orders
+
+select * from customer where C_ID in (select CID from orders) --(C2,C3,C1,C2,C4,C2)  --Subquery
+
+
+
+
+select * from customer C where exists (select * from orders O where C.C_ID =O.CID ) --Corelational
+
+select * from customer C where not exists (select * from orders O where C.C_ID =O.CID )
+
+
+
+
+select * from customer C where exists (select * from orders O where C.C_ID =O.CID )
+
+--Q.What is the diffrence between Sub query and Co-relational query.
+
+
+
+
+
+
+
+--Null Value replacement
+
+--We can replace NUll values from column by using three fuctions
+--1.ISNULL()
+--2.Case()
+
+create table NULL_TEST(NID int, EMP_NAME varchar(20),Manager varchar(20))
+
+insert into NULL_TEST values (1,'Piya','Sohan')
+insert into NULL_TEST values (2,'kate',NULL)
+insert into NULL_TEST values (3,'meera','aman')
+insert into NULL_TEST values (4,'amit',NULL)
+insert into NULL_TEST values (5,'sumit','Kiran')
+
+select * from NULL_TEST
+--1.ISNULL()
+  
+ --1.ISNULL()
+ --This function will help us to replace NULL value with any other user defined value.
+ --synatx: ISNULL(Colname,'String')
+ --It will accept Two arguments 
+
+
+select NID,EMP_NAME, ISNULL(Manager,'No Manager') AS MangerDetails from NULL_TEST
+
+--------------------------------------------------------------------
+
+
+
+
+--2.Case statement
+--Case statement identify the condition and returns a values.
+--It will work like IF-ELSE statement
+--If there is no ELSE statement then it will return NULL Value .
+
+--Synatx
+--case 
+--	WHEN condtion then result1
+--	WHEN condtion then result2
+--	ELSE result 
+--END
+
+select * from NULL_TEST
+
+select NID,EMP_NAME ,
+				CASE
+				when manager is NULL then 'NO Manager is present'  
+				ELSE Manager
+				END
+from NULL_TEST
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

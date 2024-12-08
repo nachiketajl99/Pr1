@@ -1,0 +1,139 @@
+--SQL SERVER FUNCTIONS
+--1.UPPER()
+--UPPER() Function converts the value of field/Column to upper case.
+--The upper case function requires 1 argument
+--syntax :upper (text/column name)
+select UPPER('data global')
+select * from INFORMATION_SCHEMA.tables 
+
+select *,UPPER(firstname) as UPPERCASE from employee
+
+--2.LOWER()
+--Lower() Function converts the value of field/Column to lower case.
+--The lower case function requires 1 argument
+--syntax :lower (text/column name)
+
+select LOWER('data')
+
+select *,LOWER(LastName) as lowercase from employee
+
+--3.Substring
+--The substring function used to extract charecter from text field 
+--Synatx : substring(Column_Name,Start,end[lenth]) from table_Name
+--Ex: substring ( 'varchar',int,int)
+select SUBSTRING('SCODEEN',3,2)
+
+select *,SUBSTRING(FirstName,1,1) as FisrtLetter from employee
+
+select *,SUBSTRING(FirstName,5,len(firstname)) as FisrtLetter ,len(firstname) as lenths from employee
+
+
+--4.DATALENGTH() and LEN()
+--This function returns the number of bytes used to reprsent the expression.
+--Syntax : DATALENGTH(string),LEN(String/Column_name)
+
+create table length_check (Lid int, Lname char(20))
+
+insert into length_check values(1,'Praveen')
+insert into length_check values(2,'Amit')
+insert into length_check values(3,'Meena')
+insert into length_check values(4,'Sohan')
+insert into length_check values(5,'Rajni')
+
+select *,LEN(Lname) as lengths from length_check 
+select *,datalength(Lname) as datalengths from length_check 
+
+select *,LEN(Lid) as lengths from length_check 
+select *,datalength(Lid) as datalengths from length_check
+
+--5.CONCAT() , CONCAT with + and CONCAT_WS()
+--The CONCAT() function adds two or more strings together.
+--Syntax: CONCAT(string1,string2....)
+
+--The + operator allows you to add two or more strings together.
+--syntax:string1 + string2 + string_n
+
+
+
+--6.Reverse()
+--The REVERSE() function reverses a string and returns the result.
+--synatx : REVERSE(string)
+select REVERSE('PUNE')
+select REVERSE('MITHALI')
+
+--7.LTRIM(), RTRIM() and TRIM()
+--The LTRIM() function removes leading spaces from a string.
+--The RTRIM() function removes trailing spaces from a string.
+--TRIM() function removes leading as well as trailing spaces from string.
+
+select len('              LTRIM') 
+select len(LTRIM('              LTRIM') )
+
+select len('          LTRIM           ') 
+select Rtrim('              data             ') --'LTRIM             '
+select ltrim('              LTRIM             ')
+select trim('              LTRIM             ') 
+
+
+
+
+--8.REPLACE() 
+--The REPLACE() function replaces all occurrences of a substring within a string, with a new string.
+--Note: The search is not case-insensitive.
+--Syntax - REPLACE(string, old_string, new_string)
+
+-- A-a , B-b meaning is same in replace function.
+
+select replace ('Seedm','E','M')
+
+
+--9.REPLICATE()
+--The REPLICATE() function repeats a string a specified number of times.
+--Syntax :REPLICATE(string, integer)
+select replicate ('data ',4)
+
+--10.CONVERT()
+--The CONVERT() function converts a value (of any type) into a specified datatype.
+--Syntax :CONVERT(data_type[(length)], expression/Col_NAME, [(style)])
+
+
+create table DOJ (id int, NAME varchar(20),DOJoining datetime)
+
+insert into DOJ values (1,'Mansa','2020-01-01 10:10:10')
+insert into DOJ values (2,'Vasavi','2015-06-01 10:20:10')
+insert into DOJ values (3,'Pravlika','2014-04-01 11:10:10')
+insert into DOJ values (4,'Jyoti','2017-08-01 12:10:10')
+insert into DOJ values (5,'Pushpa','2016-05-01 01:23:10')
+insert into DOJ values (6,'Seema',GETDATE())
+select * from DOJ
+select GETDATE()
+select convert(varchar,getdate(),2)
+
+select *, convert(varchar,DOJ) as NewCreatedDOJ from DOJ
+
+select *, convert(varchar(11),DOJ,102) as NewCreatedDOJ from DOJ
+select *, convert(varchar(11),DOJ,2) as NewCreatedDOJ from DOJ
+
+
+--11.CAST()
+--The CAST() function converts a value (of any type) into a specified datatype.
+--Syntax :CAST(expression AS datatype [(length)])
+select convert(varchar,GETDATE())
+
+select cast(getdate() as varchar)
+select * from DOJ
+select *,CAST(DOJ as varchar) as DOJConverted from DOJ
+select *,convert (varchar,DOJ,102) as DOJConverted from DOJ
+
+--12.CHARINDEX()
+--The charindex() function searches for a substring in a string and returns position.
+--if the substring is not found, this function returns 0.
+--syntax : CHARINDEX(Substring,string,start)
+
+13.Left/Right
+
+--select left(data)
+--select right(data)
+
+
+
